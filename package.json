@@ -1,18 +1,58 @@
 {
   "name": "@kleora-io/browser",
-  "version": "0.0.1",
-  "description": "Reserved for the official Kleora SDK (https://kleora.io). 0.0.0 is an empty placeholder; the first release is 0.1.0.",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Kleora browser SDK — authorization code with PKCE for single-page applications.",
   "license": "Apache-2.0",
   "homepage": "https://kleora.io",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kleora-io/kleora-browser.git"
   },
-  "files": [
-    "README.md",
-    "LICENSE"
-  ],
+  "bugs": {
+    "url": "https://github.com/kleora-io/kleora-browser/issues"
+  },
   "publishConfig": {
     "access": "public"
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@11.24.0",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "prepare": "tsup",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "generate:client": "node scripts/generate-client.mjs"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.10.0",
+    "eslint": "^10.0.0",
+    "openapi-typescript": "^7.13.0",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.68.0",
+    "vitest": "^4.1.11"
   }
 }
